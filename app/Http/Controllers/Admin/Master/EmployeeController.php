@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Master;
 use App\Helper\NIP;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\Master\Employee\EmployeeResponse;
 
 class EmployeeController extends Controller
@@ -17,6 +18,14 @@ class EmployeeController extends Controller
 
     public function index(Request $request)
     {
-        $result = $this->EmployeeResponse->datatable();
+        if($request->ajax()) {
+            $result = $this->EmployeeResponse->datatable();
+                return DataTables::eloquent($result)
+                ->rawColumns(['action'])
+                ->escapeColumns(['action'])
+                ->smart(true)
+                ->make();
+        }
+            return view('master.data.employee.index');
     }
 }

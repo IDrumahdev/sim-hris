@@ -21,6 +21,6 @@ class EmployeeResponse implements EmployeeDesign {
 
     public function datatable()
     {
-        
+        return $this->model->select('nip','full_name','birth_day','gender','address','mobilephone','email','date_of_entry','job_title','department');
     }
 }
