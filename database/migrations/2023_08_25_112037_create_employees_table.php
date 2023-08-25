@@ -23,8 +23,15 @@ return new class extends Migration
             $table->string('mobilephone');
             $table->string('email')->unique();
             $table->date('date_of_entry');
-            $table->string('job_title');
-            $table->string('department');
+            $table->foreignUuid('job_title_id')
+                    ->constrained('job_titles')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+
+            $table->foreignUuid('department_id')
+                    ->constrained('departments')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
             $table->timestamps();
         });
     }
