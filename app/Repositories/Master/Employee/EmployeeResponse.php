@@ -23,4 +23,9 @@ class EmployeeResponse implements EmployeeDesign {
     {
         return $this->model->select('nip','full_name','birth_day','gender','address','mobilephone','email','date_of_entry','job_title','department');
     }
+
+    public function store($param)
+    {
+        # code...
+    }
 }
