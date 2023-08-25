@@ -70,7 +70,7 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="#">Data Employee</a>
+                    <a href="{{ route('employee.index') }}">Data Employee</a>
                 </li>
             </ul>
         </li>       

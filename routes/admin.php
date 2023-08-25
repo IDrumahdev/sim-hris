@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\RoleController;
 use App\Http\Controllers\Admin\Master\CustomerController;
 use App\Http\Controllers\Admin\Dashboard\dashboardController;
+use App\Http\Controllers\Admin\Master\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,9 +135,15 @@ Route::group(['prefix' => '/google2fa'], function () {
 });
 
 /**
- * Master Customer
+ * Master Master Employee
  */
-
+Route::group(['prefix'  => '/employee'], function () {
+    Route::name('employee.')->group(function () {
+        Route::controller(EmployeeController::class)->group(function () {
+            Route::get('/list','index')->name('index');
+        });
+    });
+});
 
 /**
  * Master Customer

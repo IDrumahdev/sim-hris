@@ -3,9 +3,9 @@
 namespace App\Repositories\Master\Employee;
 
 use App\Models\Employee;
-use App\Repositories\Employee\EmployeeDesign;
+use App\Repositories\Master\Employee\EmployeeDesign;
 
-class EmployeeResponse extends EmployeeDesign {
+class EmployeeResponse implements EmployeeDesign {
 
     /**
     * Model class to be used in this repository for the common methods inside Eloquent

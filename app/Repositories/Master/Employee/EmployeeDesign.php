@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Employee;
+namespace App\Repositories\Master\Employee;
 
 interface EmployeeDesign {
     public function datatable();
