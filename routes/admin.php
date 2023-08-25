@@ -136,6 +136,11 @@ Route::group(['prefix' => '/google2fa'], function () {
 /**
  * Master Customer
  */
+
+
+/**
+ * Master Customer
+ */
 Route::group(['prefix'  => '/customer'], function () {
     Route::name('customer.')->group(function () {
         Route::controller(CustomerController::class)->group(function () {
