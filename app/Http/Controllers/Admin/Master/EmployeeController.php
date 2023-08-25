@@ -31,7 +31,9 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        return view('master.data.employee.create');
+        $jobtitles      = $this->EmployeeResponse->jobTitleList();
+        $departments    = $this->EmployeeResponse->department();
+            return view('master.data.employee.create',compact('jobtitles','departments'));
     }
 
     public function store(Request $request)

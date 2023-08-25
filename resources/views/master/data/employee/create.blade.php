@@ -167,7 +167,51 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                    <label for="first-name-vertical">
+                                        Job Title
+                                    </label>
+                                        <select class="form-select @error('job_title') is-invalid @enderror" name="job_title">
+                                            <option value="" selected>Choose Job Title...</option>
+                                            @foreach($jobtitles as $jobtitle)
+                                                <option value="{{ $jobtitle->id }}"{{ old('job_title') == $jobtitle->id ? 'selected' : '' }}>
+                                                    {{ ucwords($jobtitle->job_title_name) }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    
+                                                @error('job_title')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                    <label for="first-name-vertical">
+                                        Departments
+                                    </label>
+                                        <select class="form-select @error('departments') is-invalid @enderror" name="departments">
+                                            <option value="" selected>Choose Departments...</option>
+                                            @foreach($departments as $department)
+                                                <option value="{{ $department->id }}"{{ old('job_title') == $department->id ? 'selected' : '' }}>
+                                                    {{ ucwords($department->department_name) }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+                                            @error('departments')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-8">
                                     <label for="first-name-vertical">
                                         Address
                                     </label>
