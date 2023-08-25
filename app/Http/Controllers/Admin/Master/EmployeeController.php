@@ -28,4 +28,14 @@ class EmployeeController extends Controller
         }
             return view('master.data.employee.index');
     }
+
+    public function create()
+    {
+        return view('master.data.employee.create');
+    }
+
+    public function store(Request $request)
+    {
+        $this->EmployeeResponse->store($param);
+    }
 }
