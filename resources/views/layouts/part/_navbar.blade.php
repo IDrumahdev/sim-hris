@@ -23,7 +23,7 @@
                         <li class="dropdown-item notification-item">
                             <a class="d-flex align-items-center" href="#">
                                 <div class="notification-text ms-4">
-                                    <p class="notification-title font-bold">Successfully check out</p>
+                                    <p class="notification-title font-bold">Successfully check out - Dummy Data</p>
                                     <p class="notification-subtitle font-thin text-sm">Order ID #256</p>
                                 </div>
                             </a>
@@ -44,7 +44,7 @@
                                     auth()->user()->profile->fullName
                                 }}
                             </h6>
-                            <p class="mb-0 text-sm text-gray-600">CMS Rumahdev</p>
+                            <p class="mb-0 text-sm text-gray-600">CMS {{ env('APP_NAME') }}</p>
                         </div>
                         <div class="user-img d-flex align-items-center">
                             <div class="avatar avatar-md">
