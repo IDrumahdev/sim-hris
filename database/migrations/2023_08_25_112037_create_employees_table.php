@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('gender');
             $table->text('address');
             $table->string('mobilephone');
-            $table->string('emai')->unique();
+            $table->string('email')->unique();
             $table->date('date_of_entry');
             $table->string('job_title');
             $table->string('department');

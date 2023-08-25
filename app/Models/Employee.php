@@ -13,7 +13,6 @@ class Employee extends Model
     public $incrementing = false;
 
     protected $fillable = [
-
+        'full_name','birth_day','gender','address','mobilephone','email','date_of_entry','job_title','department'
     ];
-
 }
