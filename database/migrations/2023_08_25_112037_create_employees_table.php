@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('nip');
             $table->string('full_name');
             $table->date('birth_day');
             $table->string('gender');
