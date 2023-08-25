@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
+use App\Helper\NIP;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Master\Employee\EmployeeResponse;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e586ab39eb3c793e24f09491e5dbc852",
+    "content-hash": "a5e7fed25d5fc21de0ff9369b9e82511",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -7106,6 +7106,56 @@
                 }
             ],
             "time": "2022-03-08T17:03:00+00:00"
+        },
+        {
+            "name": "wahyudwikrisnanto/invoice-number-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wahyudwikrisnanto/sequence-number-generator.git",
+                "reference": "76f59340691c98fde375f1a5fec2647baedcff79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wahyudwikrisnanto/sequence-number-generator/zipball/76f59340691c98fde375f1a5fec2647baedcff79",
+                "reference": "76f59340691c98fde375f1a5fec2647baedcff79",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "WahyuDwiKrisnanto\\SequenceNumberGenerator\\SequenceNumberGeneratorServiceProvider"
+                    ]
+                },
+                "aliases": {
+                    "SequenceGenerator": "WahyuDwiKrisnanto\\SequenceNumberGenerator\\Facades\\SequenceGenerator"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WahyuDwiKrisnanto\\SequenceNumberGenerator\\": "src/"
+                },
+                "classmap": [
+                    "src/database/migrations"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wahyu Dwi Krisnanto",
+                    "email": "wahyudwikrisnanto@timedoor.net"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/wahyudwikrisnanto/sequence-number-generator/issues",
+                "source": "https://github.com/wahyudwikrisnanto/sequence-number-generator/tree/master"
+            },
+            "time": "2022-12-18T14:07:04+00:00"
         },
         {
             "name": "webmozart/assert",
