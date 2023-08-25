@@ -36,7 +36,7 @@
         <div class="col-md-12 col-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="form form-vertical" action="" method="POST">
+                    <form class="form form-vertical" action="{{ route('employee.store') }}" method="POST">
                     @csrf
 
                         <div class="form-body">
@@ -216,8 +216,14 @@
                                         Address
                                     </label>
                                     <div class="form-group with-title mb-3">
-                                        <textarea class="form-control" id="address" rows="3" name="address"></textarea>
+                                        <textarea class="form-control @error('address') is-invalid @enderror" id="address" rows="3" name="address"></textarea>
                                         <label>Address Employee</label>
+
+                                        @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

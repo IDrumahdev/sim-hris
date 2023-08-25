@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Master;
 use App\Helper\NIP;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Data\Employee\store;
 use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\Master\Employee\EmployeeResponse;
 
@@ -36,8 +37,9 @@ class EmployeeController extends Controller
             return view('master.data.employee.create',compact('jobtitles','departments'));
     }
 
-    public function store(Request $request)
+    public function store(store $request)
     {
-        $this->EmployeeResponse->store($param);
+        dd($request->all());
+        $this->EmployeeResponse->store($request);
     }
 }
