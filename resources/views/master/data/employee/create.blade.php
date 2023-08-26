@@ -93,7 +93,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                     <label for="first-name-vertical">
-                                        Genderdepartment_id
+                                        Gender
                                     </label>
                                         <select class="form-select @error('gender') is-invalid @enderror" name="gender">
                                             <option value="" selected>
