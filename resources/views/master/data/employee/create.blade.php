@@ -1,5 +1,6 @@
 @push('customCss')
 <link rel="stylesheet" href="{{ asset('assets/system/css/choices.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/system/css/datepicker/datepicker.css') }}">
 @endpush
 
 @section('tittle')
@@ -76,7 +77,7 @@
                                         <label for="birth_day">
                                             Birth Day
                                         </label>
-                                        <input type="text" id="birth_day" class="form-control @error('birth_day') is-invalid @enderror"
+                                        <input type="text" class="form-control @error('birth_day') is-invalid @enderror date"
                                                name="birth_day" placeholder="Birth Day..."
                                                value="{{ old('birth_day') }}" autocomplete="off">
 
@@ -98,8 +99,8 @@
                                             <option value="" selected>
                                                 Choose...
                                             </option>            
-                                            <option value="Laki-Laki" @if (old('gender') == "Laki-Laki") {{ 'selected' }} @endif>
-                                                Laki-Laki
+                                            <option value="Pria" @if (old('gender') == "Pria") {{ 'selected' }} @endif>
+                                                Pria
                                             </option>
                                             <option value="Perempuan" @if (old('gender') == "Perempuan") {{ 'selected' }} @endif>
                                                 Perempuan
@@ -155,7 +156,7 @@
                                         <label for="date_of_entry">
                                             Active Date
                                         </label>
-                                        <input type="text" id="text" class="form-control @error('date_of_entry') is-invalid @enderror"
+                                        <input type="text" class="form-control @error('date_of_entry') is-invalid @enderror date"
                                                name="date_of_entry" placeholder="Active Date..."
                                                value="{{ old('date_of_entry') }}" autocomplete="off">
 
@@ -172,16 +173,16 @@
                                     <label for="first-name-vertical">
                                         Job Title
                                     </label>
-                                        <select class="form-select @error('job_title') is-invalid @enderror" name="job_title">
+                                        <select class="form-select @error('job_title_id') is-invalid @enderror" name="job_title_id">
                                             <option value="" selected>Choose Job Title...</option>
                                             @foreach($jobtitles as $jobtitle)
-                                                <option value="{{ $jobtitle->id }}"{{ old('job_title') == $jobtitle->id ? 'selected' : '' }}>
+                                                <option value="{{ $jobtitle->id }}"{{ old('job_title_id') == $jobtitle->id ? 'selected' : '' }}>
                                                     {{ ucwords($jobtitle->job_title_name) }}
                                                 </option>
                                             @endforeach
                                         </select>
                                     
-                                                @error('job_title')
+                                                @error('job_title_id')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -194,16 +195,16 @@
                                     <label for="first-name-vertical">
                                         Departments
                                     </label>
-                                        <select class="form-select @error('departments') is-invalid @enderror" name="departments">
+                                        <select class="form-select @error('department_id') is-invalid @enderror" name="department_id">
                                             <option value="" selected>Choose Departments...</option>
                                             @foreach($departments as $department)
-                                                <option value="{{ $department->id }}"{{ old('job_title') == $department->id ? 'selected' : '' }}>
+                                                <option value="{{ $department->id }}"{{ old('department_id') == $department->id ? 'selected' : '' }}>
                                                     {{ ucwords($department->department_name) }}
                                                 </option>
                                             @endforeach
                                         </select>
 
-                                            @error('departments')
+                                            @error('department_id')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -237,13 +238,16 @@
 </div>
 @stop
 @push('customJs')
-<script src="{{ asset('assets/system/js/choices.js') }}"></script>
-<script>
-    let choices = document.querySelectorAll('#choices')
-    let initChoice
-    for (let i = 0; i < choices.length; i++) {
-        initChoice = new Choices(choices[i])
-    }
-</script>
+    <script src="{{ asset('assets/system/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/system/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('assets/system/js/datepicker/datepicker.js') }}"></script>
+    <script>
+        $(function() {
+            var startDate = $('.date');
+            startDate.datepicker({
+                autoHide: true,
+                format: "yyyy-mm-dd",
+            });
+        });
+    </script>
 @endpush
-
