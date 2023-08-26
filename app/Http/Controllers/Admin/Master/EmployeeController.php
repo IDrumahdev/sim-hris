@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
+use Carbon\Carbon;
 use App\Helper\NIP;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Data\Employee\store;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Data\Employee\store;
 use App\Repositories\Master\Employee\EmployeeResponse;
 
 class EmployeeController extends Controller
@@ -22,6 +23,26 @@ class EmployeeController extends Controller
         if($request->ajax()) {
             $result = $this->EmployeeResponse->datatable();
                 return DataTables::eloquent($result)
+
+                ->addColumn('action', function ($action) {
+                    return "Oke";
+                })
+
+                ->editColumn('created_at', function ($created) {
+                    $date = Carbon::create($created->created_at)->format('d-m-Y H:i:s');
+                    return $date;
+                })
+
+                ->editColumn('birth_day', function ($birth) {
+                    $date = Carbon::create($birth->birth_day)->format('d-m-Y');
+                    return $date;
+                })
+
+                ->editColumn('date_of_entry', function ($date_of) {
+                    $date = Carbon::create($date_of->date_of_entry)->format('d-m-Y');
+                    return $date;
+                })
+
                 ->rawColumns(['action'])
                 ->escapeColumns(['action'])
                 ->smart(true)
@@ -39,7 +60,23 @@ class EmployeeController extends Controller
 
     public function store(store $request)
     {
-        dd($request->all());
-        $this->EmployeeResponse->store($request);
+        try {
+            $this->EmployeeResponse->store($request);
+            $notification = [
+                'message'     => 'Successfully created Data Employee.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                    return redirect()->route('employee.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to created Data Employee.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('employee.index')->with($notification);
+        }
     }
 }

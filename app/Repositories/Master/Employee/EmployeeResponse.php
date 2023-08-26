@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Master\Employee;
 
+use App\Helper\NIP;
 use App\Models\Employee;
 use App\Models\JobTitle;
 use App\Models\Department;
@@ -37,12 +38,24 @@ class EmployeeResponse implements EmployeeDesign {
 
     public function datatable()
     {
-        return $this->model->select('nip','full_name','birth_day','gender','address','mobilephone','email','date_of_entry','job_title','department');
+        return $this->model->select('nip','full_name','birth_day','gender','address','mobilephone','email','date_of_entry','job_title_id','department_id','created_at');
     }
 
 
     public function store($param)
     {
-        # code...
+        $nip = NIP::generate();
+        $this->model->create([
+            'nip'           => $nip,
+            'full_name'     => $param->full_name,
+            'birth_day'     => $param->date_birth_day,
+            'gender'        => $param->gender,
+            'address'       => $param->address,
+            'mobilephone'   => $param->mobilephone,
+            'email'         => $param->email,
+            'date_of_entry' => $param->date_of_entry,
+            'job_title_id'  => $param->job_title_id,
+            'department_id' => $param->department_id
+        ]);
     }
 }

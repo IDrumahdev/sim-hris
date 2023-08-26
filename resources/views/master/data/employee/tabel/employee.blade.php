@@ -72,7 +72,7 @@
             serverSide      : true,
             ajax            :
                                 {
-                                    url : '{{ route("customer.index") }}',
+                                    url : '{{ route("employee.index") }}',
                                 },
             columns         :
             [
@@ -92,8 +92,8 @@
                 {data:'mobilephone',name:'mobilephone'},
                 {data:'email',name:'email'},
                 {data:'date_of_entry',name:'date_of_entry'},
-                {data:'job_title',name:'job_title'},
-                {data:'department',name:'department'},
+                {data:'job_title_id',name:'job_title_id'},
+                {data:'department_id',name:'department_id'},
                 {data:'created_at',name:'created_at'},
             ]
         });

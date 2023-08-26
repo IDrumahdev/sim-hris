@@ -46,7 +46,7 @@
                             <th class="text-left" width="20px">
                                 No.
                             </th>
-                            <th class="text-left" width="100px">
+                            <th class="text-left" width="150px">
                                 NIM
                             </th>
                             <th class="text-left" width="150px">

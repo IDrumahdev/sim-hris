@@ -24,15 +24,15 @@ class store extends FormRequest
     public function rules()
     {
         return [
-            'full_name'     => 'required|max:100',
-            'birth_day'     => 'required|date',
-            'gender'        => 'required|in:Pria,Perempuan',
-            'mobilephone'   => 'required|min:10|max:13',
-            'email'         => 'required|email|unique:employees,email',
-            'date_of_entry' => 'required|date',
-            'job_title_id'  => 'required',
-            'department_id' => 'required',
-            'address'       => 'required|max:255',
+            'full_name'         => 'required|max:100',
+            'date_birth_day'    => 'required|date',
+            'gender'            => 'required|in:Pria,Perempuan',
+            'mobilephone'       => 'required|min:10|max:13',
+            'email'             => 'required|email|unique:employees,email',
+            'date_of_entry'     => 'required|date',
+            'job_title_id'      => 'required',
+            'department_id'     => 'required',
+            'address'           => 'required|max:255',
         ];
     }
 
@@ -41,8 +41,8 @@ class store extends FormRequest
         return [
             'full_name.required'        => 'Kolom nama lengkap harus diisi.',
             'full_name.max'             => 'Nama lengkap maksimal 100 karakter.',
-            'birth_day.required'        => 'Kolom tanggal lahir harus diisi.',
-            'birth_day.date'            => 'Kolom tanggal lahir harus berupa tanggal.',
+            'date_birth_day.required'   => 'Kolom tanggal lahir harus diisi.',
+            'date_birth_day.date'       => 'Kolom tanggal lahir harus berupa tanggal.',
             'gender.required'           => 'Kolom jenis kelamin harus diisi.',
             'gender.in'                 => 'Jenis kelamin harus Pria atau Perempuan.',
             'mobilephone.required'      => 'Kolom nomor telepon harus diisi.',

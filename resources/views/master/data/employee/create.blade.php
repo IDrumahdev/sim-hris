@@ -74,15 +74,15 @@
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="birth_day">
+                                        <label for="date_birth_day">
                                             Birth Day
                                         </label>
-                                        <input type="text" class="form-control @error('birth_day') is-invalid @enderror date"
-                                               name="birth_day" placeholder="Birth Day..."
-                                               value="{{ old('birth_day') }}" autocomplete="off">
+                                        <input type="text" class="form-control @error('date_birth_day') is-invalid @enderror date"
+                                               name="date_birth_day" placeholder="Birth Day..."
+                                               value="{{ old('date_birth_day') }}" autocomplete="off">
 
                                         
-                                            @error('birth_day')
+                                            @error('date_birth_day')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -93,7 +93,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                     <label for="first-name-vertical">
-                                        Gender
+                                        Genderdepartment_id
                                     </label>
                                         <select class="form-select @error('gender') is-invalid @enderror" name="gender">
                                             <option value="" selected>
