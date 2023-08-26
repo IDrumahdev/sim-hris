@@ -39,4 +39,13 @@ class SalaryCutResponse implements SalaryCutDesign {
                             ->whereId($id)
                             ->firstOrFail();
     }
+
+    public function update($param, $id)
+    {
+        $this->model->whereId($id)->update([
+            'salary_cut_name'   => $param->salary_cut_name,
+            'nominal'           => $param->nominal,
+            'description'       => $param->description
+        ]);
+    }
 }

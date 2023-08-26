@@ -78,4 +78,26 @@ class salaryCutController extends Controller
             $result = $this->SalaryCutResponse->find($id);
             return view('master.data.salary_cut.edit',compact('result'));
         }
+
+        public function update(Request $request, $id)
+        {
+            try {
+                $this->SalaryCutResponse->update($request, $id);
+                $notification = [
+                    'message'     => 'Successfully updated Data Salary Cut.',
+                    'alert-type'  => 'success',
+                    'gravity'     => 'bottom',
+                    'position'    => 'right'
+                ];
+                    return redirect()->route('salary-cut.index')->with($notification);
+            } catch (\Throwable $th) {
+                $notification = [
+                    'message'     => 'Failed to updated Data Salary Cut.',
+                    'alert-type'  => 'danger',
+                    'gravity'     => 'bottom',
+                    'position'    => 'right'
+                ];
+                    return redirect()->route('salary-cut.index')->with($notification);
+            }
+        }
 }
