@@ -14,7 +14,7 @@ class attendance extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'employee_id', 'date_attendance', 'check_in', 'description', 'status_attendance'
+        'employee_id', 'date_attendance', 'check_in','check_out', 'description', 'status_attendance'
     ];
 
     public function employee()

@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Auth\Google2FaController;
 Route::name('attendance.')->group(function () {
     Route::controller(AttendanceController::class)->group(function () {
         Route::get('/','create')->name('create');
+        Route::post('/attendance/store','store')->name('store');
     });
 });
 

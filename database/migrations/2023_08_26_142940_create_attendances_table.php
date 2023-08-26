@@ -22,7 +22,8 @@ return new class extends Migration
 
             $table->date('date_attendance');
             $table->time('check_in');
-            $table->time('description');
+            $table->time('check_out');
+            $table->string('description')->nullable();
             $table->string('status_attendance')->default('WFO');
             $table->timestamps();
         });

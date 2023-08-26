@@ -27,6 +27,7 @@
     <link href="{{ asset('assets/auth/css/avatar.min.css') }}" rel="stylesheet">
     <script src="{{ asset('assets/auth/js/helpers.js') }}"></script>
     <script src="{{ asset('assets/auth/js/config.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/system/css/toastify.css') }}">
 </head>
 <body>
     <!-- Content -->
@@ -37,14 +38,14 @@
             <div class="card-body shadow rounded">
 
               <div class="d-flex justify-content-center">
-                <a href="{{ route('login') }}" class="app-brand-link gap-2">
+                <a href="{{ route('attendance.create') }}" class="app-brand-link gap-2">
                   <h4>
                     Attendance Employee
                   </h4>
                 </a>
               </div>
               
-              <form id="formAuthentication" class="mb-3" method="POST" action="">
+              <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('attendance.store') }}">
                 @csrf
 
                 <div class="mb-3">
@@ -111,6 +112,10 @@
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
-      </script>
+    </script>
   </body>
+    <script src="{{ asset('assets/system/js/toastify.js') }}"></script>
+    @if(Session::has('message'))
+        @include('layouts.part._notif')
+    @endif
 </html>
