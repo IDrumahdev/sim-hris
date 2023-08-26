@@ -7,7 +7,7 @@ return [
      * (without brackets)
      */
 
-    'prefix' => 'NIP-'.date('ym'),
+    'prefix' => date('ym'),
 
     /**
      * The number of digits or length of the sequence,
@@ -31,7 +31,7 @@ return [
      * (without brackets)
      */
 
-    'prefix_sequence_separator' => '-',
+    'prefix_sequence_separator' => '',
 
     /**
      * Type is the category of the generated sequence number

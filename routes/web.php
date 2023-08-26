@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Web\AttendanceController;
 use App\Http\Controllers\Admin\Auth\Google2FaController;
 
 /*
@@ -16,8 +17,10 @@ use App\Http\Controllers\Admin\Auth\Google2FaController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::name('attendance.')->group(function () {
+    Route::controller(AttendanceController::class)->group(function () {
+        Route::get('/','create')->name('create');
+    });
 });
 
 Route::prefix('app/v1/')->group(function () {
