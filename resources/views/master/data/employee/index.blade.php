@@ -73,10 +73,10 @@
                             <th class="text-left" width="100px">
                                 Job Title
                             </th>
-                            <th class="text-left" width="100px">
+                            <th class="text-left" width="200px">
                                 Department
                             </th>
-                            <th class="text-left" width="110px">
+                            <th class="text-left" width="150px">
                                 Created
                             </th>
                         </tr>

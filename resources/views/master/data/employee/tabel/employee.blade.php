@@ -92,8 +92,8 @@
                 {data:'mobilephone',name:'mobilephone'},
                 {data:'email',name:'email'},
                 {data:'date_of_entry',name:'date_of_entry'},
-                {data:'job_title_id',name:'job_title_id'},
-                {data:'department_id',name:'department_id'},
+                {data:'job_title.job_title_name',name:'job_title.job_title_name'},
+                {data:'department.department_name',name:'department.department_name'},
                 {data:'created_at',name:'created_at'},
             ]
         });
