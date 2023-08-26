@@ -77,7 +77,7 @@
                                         <label for="nominal">
                                             Nominal
                                         </label>
-                                        <input type="text" class="form-control @error('nominal') is-invalid @enderror"
+                                        <input type="number" class="form-control @error('nominal') is-invalid @enderror"
                                                name="nominal" placeholder="Nominal..."
                                                value="{{ old('nominal') }}" autocomplete="off">
 
