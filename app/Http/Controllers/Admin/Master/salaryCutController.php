@@ -25,7 +25,7 @@ class salaryCutController extends Controller
 
                         ->addColumn('action', function ($action) {
                             $Edit   =   '
-                                            <a href="" type="button" class="btn btn-success btn-sm btn-size">
+                                            <a href="'.url(route('salary-cut.edit',$action->id)).'" type="button" class="btn btn-success btn-sm btn-size">
                                                 Edit
                                             </a>
                                         ';
@@ -71,5 +71,11 @@ class salaryCutController extends Controller
                 ];
                     return redirect()->route('salary-cut.index')->with($notification);
             }
+        }
+
+        public function edit($id)
+        {
+            $result = $this->SalaryCutResponse->find($id);
+            return view('master.data.salary_cut.edit',compact('result'));
         }
 }

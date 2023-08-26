@@ -32,4 +32,11 @@ class SalaryCutResponse implements SalaryCutDesign {
             'description'       => $param->description
         ]);
     }
+
+    public function find($id)
+    {
+        return $this->model->select('id','salary_cut_name','nominal','description')
+                            ->whereId($id)
+                            ->firstOrFail();
+    }
 }
