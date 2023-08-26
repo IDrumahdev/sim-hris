@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('salary_cut_name',200);
             $table->integer('nominal')->default(0);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

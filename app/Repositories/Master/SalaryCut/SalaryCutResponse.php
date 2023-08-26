@@ -23,4 +23,13 @@ class SalaryCutResponse implements SalaryCutDesign {
     {
         return $this->model->select('id','salary_cut_name','nominal','description');
     }
+
+    public function store($param)
+    {
+        $this->model->create([
+            'salary_cut_name'   => $param->salary_cut_name,
+            'nominal'           => $param->nominal,
+            'description'       => $param->description
+        ]);
+    }
 }

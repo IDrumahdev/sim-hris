@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Master;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Data\SaleryCut\store;
 use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\Master\SalaryCut\SalaryCutResponse;
 
@@ -32,7 +33,7 @@ class salaryCutController extends Controller
                         })
 
                         ->editColumn('created_at', function ($created) {
-                            $date = Carbon::create($created->created_at)->format('d-m-Y H:i:s');
+                            $date = Carbon::create($created->created_at)->format('d-m-Y');
                             return $date;
                         })
                         
@@ -48,5 +49,27 @@ class salaryCutController extends Controller
         public function create()
         {
             return view('master.data.salary_cut.create');
+        }
+
+        public function store(store $request)
+        {
+            try {
+                $this->SalaryCutResponse->store($request);
+                $notification = [
+                    'message'     => 'Successfully created Data Salary Cut.',
+                    'alert-type'  => 'success',
+                    'gravity'     => 'bottom',
+                    'position'    => 'right'
+                ];
+                    return redirect()->route('salary-cut.index')->with($notification);
+            } catch (\Throwable $th) {
+                $notification = [
+                    'message'     => 'Failed to created Data Salary Cut.',
+                    'alert-type'  => 'danger',
+                    'gravity'     => 'bottom',
+                    'position'    => 'right'
+                ];
+                    return redirect()->route('salary-cut.index')->with($notification);
+            }
         }
 }
