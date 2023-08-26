@@ -7,4 +7,5 @@ interface EmployeeDesign {
     public function jobTitleList();
     public function department();
     public function store($param);
+    public function find($id);
 }

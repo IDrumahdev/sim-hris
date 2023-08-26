@@ -4,7 +4,7 @@
 @endpush
 
 @section('tittle')
-| Create Employee
+| Edit Employee
 @endsection
 
 @extends('layouts.app')
@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-first">
                 <h3>
-                    Create Employee
+                    Edit Employee
                 </h3>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-last">
@@ -25,7 +25,7 @@
                             List Employee
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Create Employee
+                            Edit Employee
                         </li>
                     </ol>
                 </nav>
@@ -37,7 +37,8 @@
         <div class="col-md-12 col-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="form form-vertical" action="{{ route('employee.store') }}" method="POST">
+                    <form class="form form-vertical" action="{{ route('employee.update',$result->id) }}" method="POST">
+                    @method('PUT')
                     @csrf
 
                         <div class="form-body">
@@ -48,9 +49,9 @@
                                         <i class="fas fa-arrow-alt-circle-left"></i>
                                         Back
                                     </a>
-                                    <button type="submit" class="btn btn-primary icon icon-left me-1 mb-1">
-                                        <i class="fas fa-plus-circle"></i>
-                                        Create
+                                    <button type="submit" class="btn btn-success icon icon-left me-1 mb-1">
+                                        <i class="fas fa-edit"></i>
+                                        Edit
                                     </button>
                                 </div>
 
@@ -61,7 +62,7 @@
                                         </label>
                                         <input type="text" id="full_name" class="form-control @error('full_name') is-invalid @enderror"
                                                name="full_name" placeholder="Full Name..."
-                                               value="{{ old('full_name') }}" autocomplete="off" autofocus>
+                                               value="{{ old('full_name',$result->full_name) }}" autocomplete="off" autofocus>
 
                                         
                                             @error('full_name')
@@ -79,7 +80,7 @@
                                         </label>
                                         <input type="text" class="form-control @error('date_birth_day') is-invalid @enderror date"
                                                name="date_birth_day" placeholder="Birth Day..."
-                                               value="{{ old('date_birth_day') }}" autocomplete="off">
+                                               value="{{ old('date_birth_day',$result->birth_day) }}" autocomplete="off">
 
                                         
                                             @error('date_birth_day')
@@ -99,10 +100,10 @@
                                             <option value="" selected>
                                                 Choose...
                                             </option>            
-                                            <option value="Pria" @if (old('gender') == "Pria") {{ 'selected' }} @endif>
+                                            <option value="Pria" @if (old('gender',$result->gender) == "Pria") {{ 'selected' }} @endif>
                                                 Pria
                                             </option>
-                                            <option value="Perempuan" @if (old('gender') == "Perempuan") {{ 'selected' }} @endif>
+                                            <option value="Perempuan" @if (old('gender',$result->gender) == "Perempuan") {{ 'selected' }} @endif>
                                                 Perempuan
                                             </option>
                                         </select>
@@ -122,7 +123,7 @@
                                         </label>
                                         <input type="text" id="mobilephone" class="form-control @error('mobilephone') is-invalid @enderror"
                                                name="mobilephone" placeholder="Mobilephone..."
-                                               value="{{ old('mobilephone') }}" autocomplete="off">
+                                               value="{{ old('mobilephone',$result->mobilephone) }}" autocomplete="off">
 
                                         
                                             @error('mobilephone')
@@ -140,7 +141,7 @@
                                         </label>
                                         <input type="email" id="email" class="form-control @error('email') is-invalid @enderror"
                                                name="email" placeholder="Email..."
-                                               value="{{ old('email') }}" autocomplete="off">
+                                               value="{{ old('email',$result->email ) }}" autocomplete="off">
 
                                         
                                             @error('email')
@@ -158,7 +159,7 @@
                                         </label>
                                         <input type="text" class="form-control @error('date_of_entry') is-invalid @enderror date"
                                                name="date_of_entry" placeholder="Active Date..."
-                                               value="{{ old('date_of_entry') }}" autocomplete="off">
+                                               value="{{ old('date_of_entry',$result->date_of_entry) }}" autocomplete="off">
 
                                             @error('date_of_entry')
                                                 <span class="invalid-feedback" role="alert">
@@ -174,19 +175,25 @@
                                         Job Title
                                     </label>
                                         <select class="form-select @error('job_title_id') is-invalid @enderror" name="job_title_id">
-                                            <option value="" selected>Choose Job Title...</option>
+                                            <option value="" selected>Choose Departments...</option>
                                             @foreach($jobtitles as $jobtitle)
-                                                <option value="{{ $jobtitle->id }}"{{ old('job_title_id') == $jobtitle->id ? 'selected' : '' }}>
-                                                    {{ ucwords($jobtitle->job_title_name) }}
-                                                </option>
+                                                @if (old('job_title_id') == $jobtitle->id)
+                                                    <option value="{{ $jobtitle->id }}" selected>
+                                                        {{ ucwords($jobtitle->job_title_name) }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $jobtitle->id }}" {{ $jobtitle->id == $result->job_title_id ? 'selected' : '' }}>
+                                                        {{ ucwords($jobtitle->job_title_name) }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     
-                                                @error('job_title_id')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            @error('job_title_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                     </div>
                                 </div>
 
@@ -198,9 +205,15 @@
                                         <select class="form-select @error('department_id') is-invalid @enderror" name="department_id">
                                             <option value="" selected>Choose Departments...</option>
                                             @foreach($departments as $department)
-                                                <option value="{{ $department->id }}"{{ old('department_id') == $department->id ? 'selected' : '' }}>
-                                                    {{ ucwords($department->department_name) }}
-                                                </option>
+                                                @if (old('department_id') == $department->id)
+                                                    <option value="{{ $department->id }}" selected>
+                                                        {{ ucwords($department->department_name) }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $department->id }}" {{ $department->id == $result->department_id ? 'selected' : '' }}>
+                                                        {{ ucwords($department->department_name) }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
 
@@ -217,7 +230,7 @@
                                         Address
                                     </label>
                                     <div class="form-group with-title mb-3">
-                                        <textarea class="form-control @error('address') is-invalid @enderror" id="address" rows="3" name="address"></textarea>
+                                        <textarea class="form-control @error('address') is-invalid @enderror" id="address" rows="3" name="address">{{ old('address',$result->address) }}</textarea>
                                         <label>Address Employee</label>
 
                                         @error('address')

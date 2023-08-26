@@ -25,7 +25,12 @@ class EmployeeController extends Controller
                 return DataTables::eloquent($result)
 
                 ->addColumn('action', function ($action) {
-                    return "Oke";
+                    $Edit   =   '
+                                    <a href="'.url(route('employee.edit',$action->id)).'" type="button" class="btn btn-success btn-sm btn-size">
+                                        Edit
+                                    </a>
+                                ';
+                    return $Edit;
                 })
 
                 ->editColumn('created_at', function ($created) {
@@ -72,6 +77,36 @@ class EmployeeController extends Controller
         } catch (\Throwable $th) {
             $notification = [
                 'message'     => 'Failed to created Data Employee.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('employee.index')->with($notification);
+        }
+    }
+
+    public function edit($id)
+    {
+        $result         = $this->EmployeeResponse->find($id);
+        $departments    = $this->EmployeeResponse->department();
+        $jobtitles      = $this->EmployeeResponse->jobTitleList();
+            return view('master.data.employee.edit',compact('jobtitles','departments','result'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $this->EmployeeResponse->update($request, $id);
+            $notification = [
+                'message'     => 'Successfully updated Data Employee.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                    return redirect()->route('employee.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to updated Data Employee.',
                 'alert-type'  => 'danger',
                 'gravity'     => 'bottom',
                 'position'    => 'right'

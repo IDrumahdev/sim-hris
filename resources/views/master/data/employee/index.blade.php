@@ -40,7 +40,7 @@
                 <table class="table table-hover table-striped" id="tableEmployee">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-center" width="100px">
+                            <th class="text-center" width="50px">
                                 Action
                             </th>
                             <th class="text-left" width="20px">

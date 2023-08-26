@@ -38,16 +38,36 @@ class EmployeeResponse implements EmployeeDesign {
 
     public function datatable()
     {
-        return $this->model->select('nip','full_name','birth_day','gender','address','mobilephone','email','date_of_entry','job_title_id','department_id','created_at')
+        return $this->model->select('id','nip','full_name','birth_day','gender','address','mobilephone','email','date_of_entry','job_title_id','department_id','created_at')
                             ->with('job_title','department');
     }
-
 
     public function store($param)
     {
         $nip = NIP::generate();
         $this->model->create([
             'nip'           => $nip,
+            'full_name'     => $param->full_name,
+            'birth_day'     => $param->date_birth_day,
+            'gender'        => $param->gender,
+            'address'       => $param->address,
+            'mobilephone'   => $param->mobilephone,
+            'email'         => $param->email,
+            'date_of_entry' => $param->date_of_entry,
+            'job_title_id'  => $param->job_title_id,
+            'department_id' => $param->department_id
+        ]);
+    }
+
+    public function find($id)
+    {
+        return $this->model->select('id','nip','full_name','birth_day','gender','address','mobilephone','email','date_of_entry','job_title_id','department_id','created_at')
+                            ->whereId($id)->firstOrFail();
+    }
+
+    public function update($param, $id)
+    {
+        $this->model->whereId($id)->update([
             'full_name'     => $param->full_name,
             'birth_day'     => $param->date_birth_day,
             'gender'        => $param->gender,
