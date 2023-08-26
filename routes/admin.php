@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Auth\AdminController;
-use App\Http\Controllers\Admin\Auth\Google2FaController;
-use App\Http\Controllers\Admin\Auth\ModuleController;
-use App\Http\Controllers\Admin\Auth\PermissionController;
-use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\RoleController;
+use App\Http\Controllers\Admin\Auth\AdminController;
+use App\Http\Controllers\Admin\Auth\ModuleController;
+use App\Http\Controllers\Admin\Auth\ProfileController;
+use App\Http\Controllers\Admin\Auth\Google2FaController;
+use App\Http\Controllers\Admin\Auth\PermissionController;
 use App\Http\Controllers\Admin\Master\CustomerController;
-use App\Http\Controllers\Admin\Dashboard\dashboardController;
 use App\Http\Controllers\Admin\Master\EmployeeController;
+use App\Http\Controllers\Admin\Master\salaryCutController;
+use App\Http\Controllers\Admin\Dashboard\dashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,7 +136,7 @@ Route::group(['prefix' => '/google2fa'], function () {
 });
 
 /**
- * Master Master Employee
+ * Master Employee
  */
 Route::group(['prefix'  => '/employee'], function () {
     Route::name('employee.')->group(function () {
@@ -145,6 +146,17 @@ Route::group(['prefix'  => '/employee'], function () {
             Route::post('/store','store')->name('store');
             Route::get('/edit/{id}','edit')->name('edit');
             Route::put('/update/{id}','update')->name('update');
+        });
+    });
+});
+
+/**
+ * Master Salary Cuts
+ */
+Route::group(['prefix'  => '/salary-cut'], function () {
+    Route::name('salary-cut.')->group(function () {
+        Route::controller(salaryCutController::class)->group(function () {
+            Route::get('/list','index')->name('index');
         });
     });
 });

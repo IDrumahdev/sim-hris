@@ -72,6 +72,9 @@
                 <li class="submenu-item ">
                     <a href="{{ route('employee.index') }}">Data Employee</a>
                 </li>
+                <li class="submenu-item ">
+                    <a href="{{ route('salary-cut.index') }}">Data Salary Cut</a>
+                </li>
             </ul>
         </li>       
     </ul>
