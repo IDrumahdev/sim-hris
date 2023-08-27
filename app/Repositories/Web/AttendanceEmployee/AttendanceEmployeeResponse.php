@@ -22,6 +22,11 @@ class AttendanceEmployeeResponse implements AttendanceEmployeeDesign {
         $this->employee = $employee;
     }
 
+    public function datatable()
+    {
+        return $this->model->select('id','employee_id', 'date_attendance', 'check_in','check_out', 'description', 'status_attendance');
+    }
+
     public function check_attendance($nip)
     {
         $employee_id    = $this->employee->select('id')

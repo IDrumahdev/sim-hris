@@ -76,6 +76,21 @@
                     <a href="{{ route('salary-cut.index') }}">Data Salary Cut</a>
                 </li>
             </ul>
-        </li>       
+        </li>
+        
+        <li class="sidebar-item has-sub">
+            <a href="#" class='sidebar-link'>
+                <i class="fas fa-folder"></i>
+                <span>Process</span>
+            </a>
+            <ul class="submenu ">
+                <li class="submenu-item ">
+                    <a href="{{ route('attendance.report') }}">Report Attendance</a>
+                </li>
+                <li class="submenu-item ">
+                    <a href="#">Report Payroll</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>
