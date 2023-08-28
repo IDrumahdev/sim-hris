@@ -46,7 +46,7 @@
                             <th class="text-left" width="100px">
                                 Mobilephone
                             </th>
-                            <th class="text-left" width="100px">
+                            <th class="text-left" width="150px">
                                 Date Attendance
                             </th>
                             <th class="text-left" width="100px">
@@ -55,16 +55,16 @@
                             <th class="text-left" width="100px">
                                 Check Out
                             </th>
-                            <th class="text-left" width="100px">
+                            <th class="text-left" width="150px">
                                 Status Attendance
                             </th>
-                            <th class="text-left" width="100px">
+                            <th class="text-left" width="180px">
                                 Job Title
                             </th>
-                            <th class="text-left" width="100px">
+                            <th class="text-left" width="200px">
                                 Name Department
                             </th>
-                            <th class="text-left" width="100px">
+                            <th class="text-left" width="180px">
                                 Description
                             </th>
                             <th class="text-left" width="150px">
@@ -82,6 +82,7 @@
 <script src="{{ asset('assets/system/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/system/js/datatables.min.js') }}"></script>
 <script src="{{ asset('assets/system/js/sweetalert2.all.min.js') }}"></script>
+@include('master.process.attendance.tabel.index')
 @endpush
 
 @push('Alert')

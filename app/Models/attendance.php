@@ -19,6 +19,6 @@ class attendance extends Model
 
     public function employee()
     {
-        return $this->belongsTo(Employee::class,'employee_id','id')->select('id','nip','full_name');
+        return $this->belongsTo(Employee::class,'employee_id','id')->select('id','nip','full_name','mobilephone','job_title_id','department_id');
     }
 }
