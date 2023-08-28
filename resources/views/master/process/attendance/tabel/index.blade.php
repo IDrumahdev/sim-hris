@@ -97,6 +97,10 @@
         });
     
         $('div.dataTables_filter input').focus();
+
+        $('#refresh').click(function() {
+            $('#tableAttendance').DataTable().ajax.reload();
+        });
     
     });
     </script>

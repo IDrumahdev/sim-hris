@@ -55,7 +55,11 @@ class AttendanceEmployeeResponse implements AttendanceEmployeeDesign {
     public function storeCheckOut($param)
     {
         $employee_id = $this->findNip($param->nip_employee);
-        $this->model->whereEmployeeId($employee_id->id)->update([
+        $dateNow     = Carbon::now()->format('Y-m-d');
+
+        $this->model->whereEmployeeId($employee_id->id)
+                    ->whereDateAttendance($dateNow)
+                    ->update([
             'check_out' => Carbon::now()->format('H:i:s'),
         ]);
     }

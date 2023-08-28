@@ -14,10 +14,16 @@
 <div class="page-heading">
     <div class="card-body">
         <div class="row">
+            <div class="col-12 d-flex justify-content-start col-md-4 order-md-1 order-last">
+                <button type="button" class="btn icon icon-left btn-primary btn-sm me-1 mb-1" id="refresh">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+            </div>
             <div class="col-12 col-md-4 order-md-1 order-first">
                 <h3>Report Attendance</h3>
             </div>
-            <div class="col-12 col-md-8 order-md-2 order-last">
+            <div class="col-12 col-md-4 order-md-2 order-last">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">Process</li>
