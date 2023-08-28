@@ -73,6 +73,9 @@
                     <a href="{{ route('employee.index') }}">Data Employee</a>
                 </li>
                 <li class="submenu-item ">
+                    <a href="{{ route('payroll.index') }}">Data Payroll</a>
+                </li>
+                <li class="submenu-item ">
                     <a href="{{ route('salary-cut.index') }}">Data Salary Cut</a>
                 </li>
             </ul>
@@ -88,7 +91,7 @@
                     <a href="{{ route('attendance.report') }}">Report Attendance</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="#">Report Payroll</a>
+                    <a href="#">Jurnal Payroll</a>
                 </li>
             </ul>
         </li>

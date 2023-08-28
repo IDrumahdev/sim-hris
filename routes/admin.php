@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Auth\AdminController;
 use App\Http\Controllers\Admin\Auth\ModuleController;
 use App\Http\Controllers\Admin\Auth\ProfileController;
 use App\Http\Controllers\Admin\Auth\Google2FaController;
+use App\Http\Controllers\Admin\Master\PayrollController;
 use App\Http\Controllers\Admin\Auth\PermissionController;
 use App\Http\Controllers\Admin\Data\AttendanceController;
 use App\Http\Controllers\Admin\Master\CustomerController;
@@ -167,12 +168,22 @@ Route::group(['prefix'  => '/salary-cut'], function () {
 });
 
 /**
- * Master Attendance
+ * Process Attendance
  */
 Route::group(['prefix'  => '/attendance'], function () {
     Route::name('attendance.')->group(function () {
         Route::controller(AttendanceController::class)->group(function () {
             Route::get('/report','report')->name('report');
+        });
+    });
+});
+
+/**
+ * Master Payroll */
+Route::group(['prefix'  => '/payroll'], function () {
+    Route::name('payroll.')->group(function () {
+        Route::controller(PayrollController::class)->group(function () {
+            Route::get('/list','index')->name('index');
         });
     });
 });

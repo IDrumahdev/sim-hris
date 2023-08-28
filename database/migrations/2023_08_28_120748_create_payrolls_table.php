@@ -13,18 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attendances', function (Blueprint $table) {
+        Schema::create('payrolls', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->integer('basic_salary');
             $table->foreignUuid('employee_id')
                     ->constrained('employees')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
 
-            $table->date('date_attendance');
-            $table->time('check_in');
-            $table->time('check_out');
-            $table->string('description')->default('Default Attendance WFO');
-            $table->string('status_attendance')->default('WFO');
+            $table->foreignUuid('salary_cut_id')
+                    ->constrained('salary_cuts')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+
+            $table->integer('allowance');
+            $table->integer('total_salary');
             $table->timestamps();
         });
     }
@@ -36,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendances');
+        Schema::dropIfExists('payrolls');
     }
 };
