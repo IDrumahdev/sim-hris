@@ -168,6 +168,16 @@ Route::group(['prefix'  => '/salary-cut'], function () {
 });
 
 /**
+ * Master Payroll */
+Route::group(['prefix'  => '/payroll'], function () {
+    Route::name('payroll.')->group(function () {
+        Route::controller(PayrollController::class)->group(function () {
+            Route::get('/list','index')->name('index');
+        });
+    });
+});
+
+/**
  * Process Attendance
  */
 Route::group(['prefix'  => '/attendance'], function () {
@@ -178,15 +188,6 @@ Route::group(['prefix'  => '/attendance'], function () {
     });
 });
 
-/**
- * Master Payroll */
-Route::group(['prefix'  => '/payroll'], function () {
-    Route::name('payroll.')->group(function () {
-        Route::controller(PayrollController::class)->group(function () {
-            Route::get('/list','index')->name('index');
-        });
-    });
-});
 
 /**
  * Master Customer
