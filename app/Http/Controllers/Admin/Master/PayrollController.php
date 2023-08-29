@@ -25,7 +25,7 @@ class PayrollController extends Controller
 
                 ->addColumn('action', function ($action) {
                     $Edit   =   '
-                                    <a href="" type="button" class="btn btn-success btn-sm btn-size">
+                                    <a href="'.url(route('payroll.edit',$action->id)).'" type="button" class="btn btn-success btn-sm btn-size">
                                         Edit
                                     </a>
                                 ';
@@ -67,12 +67,41 @@ class PayrollController extends Controller
         try {
             $this->PayrollResponse->store($request);
             $notification = [
-                'message'     => 'Successfully updated Data Payroll.',
+                'message'     => 'Successfully created Data Payroll.',
                 'alert-type'  => 'success',
                 'gravity'     => 'bottom',
                 'position'    => 'right'
             ];
                     return redirect()->route('payroll.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to created Data Payroll.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('payroll.index')->with($notification);
+        }
+    }
+
+    public function edit($id)
+    {
+        $employees  = $this->PayrollResponse->employee();
+        $result     = $this->PayrollResponse->find($id);
+            return view('master.data.payroll.edit',compact('result','employees'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $this->PayrollResponse->update($request, $id);
+            $notification = [
+                'message'     => 'Successfully updated Data Payroll.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('payroll.index')->with($notification);
         } catch (\Throwable $th) {
             $notification = [
                 'message'     => 'Failed to updated Data Payroll.',
