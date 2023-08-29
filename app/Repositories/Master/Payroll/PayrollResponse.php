@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Master\Payroll;
 
+use App\Models\Employee;
 use App\Models\Payroll;
 use App\Repositories\Master\Payroll\PayrollDesign;
 
@@ -13,15 +14,22 @@ class PayrollResponse implements PayrollDesign{
     * @property Model|mixed $model;
     */
     protected $model;
+    protected $employee;
 
-    public function __construct(Payroll $model)
+    public function __construct(Payroll $model, Employee $employee)
     {
-        $this->model = $model;
+        $this->model    = $model;
+        $this->employee = $employee;
     }
 
     public function datatabel()
     {
         return $this->model->select('id','basic_salary','employee_id','allowance','total_salary','created_at')
                             ->with('employee.job_title','employee.department');
+    }
+
+    public function employee()
+    {
+        return $this->employee->latest()->get();
     }
 }

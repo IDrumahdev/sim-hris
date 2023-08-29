@@ -55,4 +55,10 @@ class PayrollController extends Controller
         }
             return view('master.data.payroll.index');
     }
+
+    public function create()
+    {
+        $employees = $this->PayrollResponse->employee();
+            return view('master.data.payroll.create',compact('employees'));
+    }
 }
