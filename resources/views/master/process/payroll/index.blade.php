@@ -15,10 +15,10 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12 d-flex justify-content-start col-md-4 order-md-1 order-last">
-                <button type="button" class="btn icon icon-left btn-primary btn-sm me-1 mb-1" id="refresh">
+                <a href="{{ route('jurnalPayroll.process') }}" type="button" class="btn icon icon-left btn-primary btn-sm me-1 mb-1">
                     <i class="fas fa-random"></i>
                     Process
-                </button>
+                </a>
             </div>
             <div class="col-12 col-md-4 order-md-1 order-first">
                 <h3>

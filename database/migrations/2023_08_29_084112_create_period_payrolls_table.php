@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('period_payrolls', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('period_name');
+            $table->boolean('status')->default(false);
             $table->text('description')->nullable();
             $table->timestamps();
         });

@@ -200,6 +200,7 @@ Route::group(['prefix'  => '/proses-payroll'], function () {
     Route::name('jurnalPayroll.')->group(function () {
         Route::controller(JurnalPayroll::class)->group(function () {
             Route::get('/list','list')->name('list');
+            Route::get('/process','process')->name('process');
         });
     });
 });

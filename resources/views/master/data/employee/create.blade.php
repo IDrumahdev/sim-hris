@@ -1,5 +1,4 @@
 @push('customCss')
-<link rel="stylesheet" href="{{ asset('assets/system/css/choices.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/system/css/datepicker/datepicker.css') }}">
 @endpush
 

@@ -40,4 +40,10 @@ class PayrollController extends Controller
         }
             return view('master.process.payroll.index'); 
     }
+
+    public function process()
+    {
+        $periods = $this->JurnalPayrollResponse->periodPayroll();
+            return view('master.process.payroll.process',compact('periods'));
+    }
 }
