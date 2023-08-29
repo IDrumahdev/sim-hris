@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Master\CustomerController;
 use App\Http\Controllers\Admin\Master\EmployeeController;
 use App\Http\Controllers\Admin\Master\salaryCutController;
 use App\Http\Controllers\Admin\Dashboard\dashboardController;
+use App\Http\Controllers\Admin\Data\PayrollController as JurnalPayroll;
 
 /*
 |--------------------------------------------------------------------------
@@ -192,6 +193,16 @@ Route::group(['prefix'  => '/attendance'], function () {
     });
 });
 
+/**
+ * Process Jurnal Payrol
+ */
+Route::group(['prefix'  => '/proses-payroll'], function () {
+    Route::name('jurnalPayroll.')->group(function () {
+        Route::controller(JurnalPayroll::class)->group(function () {
+            Route::get('/list','list')->name('list');
+        });
+    });
+});
 
 /**
  * Master Customer

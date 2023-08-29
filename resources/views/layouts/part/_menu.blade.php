@@ -91,7 +91,7 @@
                     <a href="{{ route('attendance.report') }}">Report Attendance</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="#">Jurnal Payroll</a>
+                    <a href="{{ route('jurnalPayroll.list') }}">Jurnal Payroll</a>
                 </li>
             </ul>
         </li>
