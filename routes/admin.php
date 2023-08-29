@@ -174,6 +174,7 @@ Route::group(['prefix'  => '/payroll'], function () {
         Route::controller(PayrollController::class)->group(function () {
             Route::get('/list','index')->name('index');
             Route::get('/create','create')->name('create');
+            Route::post('/store','store')->name('store');
         });
     });
 });

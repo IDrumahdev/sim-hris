@@ -6,7 +6,7 @@ use App\Models\Employee;
 use App\Models\Payroll;
 use App\Repositories\Master\Payroll\PayrollDesign;
 
-class PayrollResponse implements PayrollDesign{
+class PayrollResponse implements PayrollDesign {
 
     /**
     * Model class to be used in this repository for the common methods inside Eloquent
@@ -31,5 +31,16 @@ class PayrollResponse implements PayrollDesign{
     public function employee()
     {
         return $this->employee->latest()->get();
+    }
+
+    public function store($param)
+    {
+        $total = $param->basic_salary + $param->allowance;
+        $this->model->create([
+            'basic_salary'      => $param->basic_salary,
+            'employee_id'       => $param->employee_id,
+            'allowance'         => $param->allowance,
+            'total_salary'      => $total
+        ]);
     }
 }

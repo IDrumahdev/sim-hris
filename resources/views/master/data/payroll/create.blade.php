@@ -37,7 +37,7 @@
         <div class="col-md-12 col-8">
             <div class="card">
                 <div class="card-body">
-                    <form class="form" action="" method="POST">
+                    <form class="form" action="{{ route('payroll.store') }}" method="POST">
                     @csrf
 
                         <div class="form-body">

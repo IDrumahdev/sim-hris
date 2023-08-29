@@ -61,4 +61,26 @@ class PayrollController extends Controller
         $employees = $this->PayrollResponse->employee();
             return view('master.data.payroll.create',compact('employees'));
     }
+
+    public function store(Request $request)
+    {
+        try {
+            $this->PayrollResponse->store($request);
+            $notification = [
+                'message'     => 'Successfully updated Data Payroll.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                    return redirect()->route('payroll.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to updated Data Payroll.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('payroll.index')->with($notification);
+        }
+    }
 }
