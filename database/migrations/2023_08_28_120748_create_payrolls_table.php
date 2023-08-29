@@ -16,16 +16,12 @@ return new class extends Migration
         Schema::create('payrolls', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->integer('basic_salary');
+
             $table->foreignUuid('employee_id')
                     ->constrained('employees')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
-
-            $table->foreignUuid('salary_cut_id')
-                    ->constrained('salary_cuts')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
-
+                    
             $table->integer('allowance');
             $table->integer('total_salary');
             $table->timestamps();

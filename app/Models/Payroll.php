@@ -15,16 +15,11 @@ class Payroll extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'basic_salary','employee_id','salary_cut_id','allowance','total_salary'
+        'basic_salary','employee_id','allowance','total_salary'
     ];
 
     public function employee()
     {
         return $this->belongsTo(Employee::class,'employee_id','id')->select('id','nip','full_name','mobilephone','job_title_id','department_id');
-    }
-
-    public function salary_cut()
-    {
-        return $this->belongsTo(salaryCut::class,'salary_cut_id','id')->select('id','salary_cut_name','nominal');
     }
 }

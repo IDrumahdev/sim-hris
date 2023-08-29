@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
+use Carbon\Carbon;
+use App\Helper\IDR;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
@@ -30,11 +32,27 @@ class PayrollController extends Controller
                     return $Edit;
                 })
 
+                ->editColumn('created_at', function ($created) {
+                    return Carbon::create($created->created_at)->format('d-m-Y H:i:s');
+                })
+
+                ->editColumn('basic_salary', function ($basic) {
+                    return "Rp." . IDR::Format($basic->basic_salary);
+                })
+
+                ->editColumn('allowance', function ($data) {
+                    return "Rp." . IDR::Format($data->allowance);
+                })
+
+                ->editColumn('total_salary', function ($data) {
+                    return "Rp." . IDR::Format($data->total_salary);
+                })
+
                 ->rawColumns(['action'])
                 ->escapeColumns(['action'])
                 ->smart(true)
                 ->make();
         }
-                return view('master.data.payroll.index');
+            return view('master.data.payroll.index');
     }
 }
