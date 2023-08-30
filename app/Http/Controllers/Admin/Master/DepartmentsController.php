@@ -43,4 +43,9 @@ class DepartmentsController extends Controller
         }
             return view('master.data.department.index');
     }
+
+    public function create()
+    {
+        return view('master.data.department.create');
+    }
 }

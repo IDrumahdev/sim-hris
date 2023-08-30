@@ -79,7 +79,7 @@
                                     </label>
                                     <div class="form-group with-title mb-3">
                                         <textarea class="form-control @error('description') is-invalid @enderror" id="description" rows="3" name="description">{{ old('description',$result->description) }}</textarea>
-                                        <label>Description Salary Cut</label>
+                                        <label>Description</label>
 
                                         @error('description')
                                             <span class="invalid-feedback" role="alert">

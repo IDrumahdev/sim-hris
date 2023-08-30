@@ -163,6 +163,7 @@ Route::group(['prefix'  => '/departments'], function () {
     Route::name('departments.')->group(function () {
         Route::controller(DepartmentsController::class)->group(function () {
             Route::get('/list','index')->name('index');
+            Route::get('/create','create')->name('create');
         });
     });
 });

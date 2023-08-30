@@ -4,7 +4,7 @@
 @endpush
 
 @section('tittle')
-| Create Job Title
+| Create Department
 @endsection
 
 @extends('layouts.app')
@@ -15,17 +15,17 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-first">
                 <h3>
-                    Create Job Title
+                    Create Department
                 </h3>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-last">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            List Job Title
+                            List Department
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Create Job Title
+                            Create Department
                         </li>
                     </ol>
                 </nav>
@@ -37,14 +37,14 @@
         <div class="col-md-12 col-8">
             <div class="card">
                 <div class="card-body">
-                    <form class="form" action="{{ route('jobTitle.store') }}" method="POST">
+                    <form class="form" action="" method="POST">
                     @csrf
 
                         <div class="form-body">
                             <div class="row">
                             
                                 <div class="col-12 d-flex justify-content-start">
-                                    <a href="{{ route('jobTitle.index') }}" class="btn btn-outline-secondary icon icon-left me-1 mb-1">
+                                    <a href="{{ route('departments.index') }}" class="btn btn-outline-secondary icon icon-left me-1 mb-1">
                                         <i class="fas fa-arrow-alt-circle-left"></i>
                                         Back
                                     </a>
@@ -56,15 +56,15 @@
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="job_title">
-                                            Job Title Name
+                                        <label for="department_name">
+                                            Department Name
                                         </label>
-                                        <input type="text" id="job_title" class="form-control @error('job_title') is-invalid @enderror"
-                                               name="job_title" placeholder="Job Title Name..."
-                                               value="{{ old('job_title') }}" autocomplete="off" autofocus>
+                                        <input type="text" id="department_name" class="form-control @error('department_name') is-invalid @enderror"
+                                               name="department_name" placeholder="Department Name..."
+                                               value="{{ old('department_name') }}" autocomplete="off" autofocus>
 
                                         
-                                            @error('job_title')
+                                            @error('department_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
