@@ -66,7 +66,7 @@
                             <th class="text-left" width="150px">
                                 Take Home Pay
                             </th>
-                            <th class="text-left" width="180px">
+                            <th class="text-left" width="300px">
                                 Description
                             </th>
                             <th class="text-left" width="150px">

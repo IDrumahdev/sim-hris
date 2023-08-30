@@ -24,7 +24,7 @@ return new class extends Migration
                     ->constrained('period_payrolls')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
-            $table->date('date_payrol');
+            $table->date('date_payroll');
             $table->integer('take_home_pay');
             $table->text('description');
             $table->timestamps();

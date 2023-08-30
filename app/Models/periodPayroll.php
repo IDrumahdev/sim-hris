@@ -13,6 +13,6 @@ class periodPayroll extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'period_name','description'
+        'period_name','status','description'
     ];
 }

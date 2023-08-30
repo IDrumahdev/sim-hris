@@ -46,4 +46,35 @@ class PayrollController extends Controller
         $periods = $this->JurnalPayrollResponse->periodPayroll();
             return view('master.process.payroll.process',compact('periods'));
     }
+
+    public function storePayroll(Request $request)
+    {
+        try {
+            $result = $this->JurnalPayrollResponse->store($request);
+            if($result === 1) {
+                $notification = [
+                    'message'     => "The Payroll Journal process has been done for that period.",
+                    'alert-type'  => 'warning',
+                    'gravity'     => 'bottom',
+                    'position'    => 'right'
+                ];
+                    return redirect()->route('jurnalPayroll.list')->with($notification);
+            }
+                $notification = [
+                    'message'     => 'Successfully created Jurnal Payroll.',
+                    'alert-type'  => 'success',
+                    'gravity'     => 'bottom',
+                    'position'    => 'right'
+            ];
+                    return redirect()->route('jurnalPayroll.list')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to created Jurnal Payroll.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('jurnalPayroll.list')->with($notification);
+        }
+    }
 }

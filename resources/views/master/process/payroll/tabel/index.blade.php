@@ -85,7 +85,7 @@
                 {data:'payroll.employee.mobilephone',name:'payroll.employee.mobilephone'},
                 {data:'payroll.employee.job_title.job_title_name',name:'payroll.employee.job_title.job_title_name'},
                 {data:'payroll.employee.department.department_name',name:'payroll.employee.department.department_name'},
-                {data:'date_payrol',name:'date_payrol'},
+                {data:'date_payroll',name:'date_payroll'},
                 {data:'take_home_pay',name:'take_home_pay'},
                 {data:'description',name:'description'},
                 {data:'created_at',name:'created_at'},

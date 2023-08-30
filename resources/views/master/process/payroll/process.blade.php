@@ -36,7 +36,7 @@
         <div class="col-md-4 col-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="form" action="" method="POST">
+                    <form class="form" action="{{ route('jurnalPayroll.store') }}" method="POST">
                     @csrf
 
                         <div class="form-body">
@@ -77,15 +77,15 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="date_payrol">
+                                        <label for="date_payroll">
                                             Date Payroll
                                         </label>
-                                        <input type="text" id="date_payrol" class="form-control @error('date_payrol') is-invalid @enderror date"
-                                               name="date_payrol" placeholder="Date Payroll..."
-                                               value="{{ old('date_payrol') }}" autocomplete="off">
+                                        <input type="text" id="date_payroll" class="form-control @error('date_payroll') is-invalid @enderror date"
+                                               name="date_payroll" placeholder="Date Payroll..."
+                                               value="{{ old('date_payroll') }}" autocomplete="off">
 
                                         
-                                            @error('date_payrol')
+                                            @error('date_payroll')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

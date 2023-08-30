@@ -14,7 +14,7 @@ class payrollJurnal extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'payroll_id','period_payroll_id','date_payrol','take_home_pay','description'
+        'payroll_id','period_payroll_id','date_payroll','take_home_pay','description'
     ];
 
     public function payroll()
