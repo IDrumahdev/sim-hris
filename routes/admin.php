@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Master\CustomerController;
 use App\Http\Controllers\Admin\Master\EmployeeController;
 use App\Http\Controllers\Admin\Master\salaryCutController;
 use App\Http\Controllers\Admin\Dashboard\dashboardController;
+use App\Http\Controllers\Admin\Master\periodPayrollController;
 use App\Http\Controllers\Admin\Data\PayrollController as JurnalPayroll;
 
 /*
@@ -156,6 +157,17 @@ Route::group(['prefix'  => '/employee'], function () {
 /**
  * Master Salary Cuts
  */
+Route::group(['prefix'  => '/period-payroll'], function () {
+    Route::name('periodPayroll.')->group(function () {
+        Route::controller(periodPayrollController::class)->group(function () {
+            Route::get('/list','index')->name('index');
+        });
+    });
+});
+
+/**
+ * Master Salary Cuts
+ */
 Route::group(['prefix'  => '/salary-cut'], function () {
     Route::name('salary-cut.')->group(function () {
         Route::controller(salaryCutController::class)->group(function () {
@@ -169,7 +181,8 @@ Route::group(['prefix'  => '/salary-cut'], function () {
 });
 
 /**
- * Master Payroll */
+ * Master Payroll
+ * */
 Route::group(['prefix'  => '/payroll'], function () {
     Route::name('payroll.')->group(function () {
         Route::controller(PayrollController::class)->group(function () {
@@ -194,7 +207,7 @@ Route::group(['prefix'  => '/attendance'], function () {
 });
 
 /**
- * Process Jurnal Payrol
+ * Process Jurnal Payroll
  */
 Route::group(['prefix'  => '/proses-payroll'], function () {
     Route::name('jurnalPayroll.')->group(function () {
