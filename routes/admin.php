@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\PermissionController;
 use App\Http\Controllers\Admin\Data\AttendanceController;
 use App\Http\Controllers\Admin\Master\CustomerController;
 use App\Http\Controllers\Admin\Master\EmployeeController;
+use App\Http\Controllers\Admin\Master\jobTitleController;
 use App\Http\Controllers\Admin\Master\salaryCutController;
 use App\Http\Controllers\Admin\Dashboard\dashboardController;
 use App\Http\Controllers\Admin\Master\periodPayrollController;
@@ -135,6 +136,17 @@ Route::group(['prefix' => '/google2fa'], function () {
             });
 
             Route::post('/activation','activation')->name('activation');
+        });
+    });
+});
+
+/**
+ * Master Job Title
+ */
+Route::group(['prefix'  => '/job-title'], function () {
+    Route::name('jobTitle.')->group(function () {
+        Route::controller(jobTitleController::class)->group(function () {
+            Route::get('/list','index')->name('index');
         });
     });
 });

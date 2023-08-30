@@ -70,6 +70,9 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
+                    <a href="{{ route('jobTitle.index') }}">Job Title</a>
+                </li>
+                <li class="submenu-item ">
                     <a href="{{ route('employee.index') }}">Data Employee</a>
                 </li>
                 <li class="submenu-item ">
