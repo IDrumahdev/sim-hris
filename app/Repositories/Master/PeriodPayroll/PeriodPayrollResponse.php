@@ -24,4 +24,12 @@ class PeriodPayrollResponse implements PeriodPayrollDesign {
     {
         return $this->model->select('id','period_name','status','description','created_at');
     }
+
+    public function store($param)
+    {
+        $this->model->create([
+            'period_name'   => $param->period_name,
+            'description'   => $param->description
+        ]);
+    }
 }

@@ -51,6 +51,23 @@ class periodPayrollController extends Controller
 
     public function store(Request $request)
     {
-       
+        try {
+            $this->PeriodPayrollResponse->store($request);
+            $notification = [
+                'message'     => 'Successfully created Data Period Payroll.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('periodPayroll.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to created Data Period Payroll.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('periodPayroll.index')->with($notification);
+        }
     }
 }
