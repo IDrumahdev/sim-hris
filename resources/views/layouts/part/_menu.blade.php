@@ -73,10 +73,10 @@
                     <a href="{{ route('employee.index') }}">Data Employee</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="{{ route('periodPayroll.index') }}">Period Payroll</a>
+                    <a href="{{ route('payroll.index') }}">Data Payroll</a>
                 </li>
                 <li class="submenu-item ">
-                    <a href="{{ route('payroll.index') }}">Data Payroll</a>
+                    <a href="{{ route('periodPayroll.index') }}">Period Payroll</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="{{ route('salary-cut.index') }}">Data Salary Cut</a>

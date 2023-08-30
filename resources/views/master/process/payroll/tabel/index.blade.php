@@ -23,7 +23,7 @@
             searching         : true,
             searchable        : true,
             ordering          : true,
-            order             : [[9, 'desc']],
+            order             : [[10, 'desc']],
             columnDefs        : [
                                     { orderable: false, targets: 0  },
                                     { orderable: false, targets: 1  },
@@ -34,6 +34,7 @@
                                     { orderable: false, targets: 6  },
                                     { orderable: false, targets: 7  },
                                     { orderable: false, targets: 8  },
+                                    { orderable: false, targets: 9  },
                                 ],
             bInfo             : true,
             responsive        : true,
@@ -85,8 +86,9 @@
                 {data:'payroll.employee.mobilephone',name:'payroll.employee.mobilephone'},
                 {data:'payroll.employee.job_title.job_title_name',name:'payroll.employee.job_title.job_title_name'},
                 {data:'payroll.employee.department.department_name',name:'payroll.employee.department.department_name'},
-                {data:'date_payroll',name:'date_payroll'},
+                {data:'period_payroll.period_name',name:'period_payroll.period_name'},
                 {data:'take_home_pay',name:'take_home_pay'},
+                {data:'date_payroll',name:'date_payroll'},
                 {data:'description',name:'description'},
                 {data:'created_at',name:'created_at'},
             ]

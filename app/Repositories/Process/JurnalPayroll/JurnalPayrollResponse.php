@@ -30,8 +30,7 @@ class JurnalPayrollResponse implements JurnalPayrollDesign {
     public function list()
     {
         return $this->model->select('payroll_id','period_payroll_id','date_payroll','take_home_pay','description','created_at')
-                            ->with('payroll.employee.job_title')
-                            ->with('payroll.employee.department');
+                            ->with('period_payroll','payroll.employee.job_title','payroll.employee.department');
     }
 
     public function periodPayroll()

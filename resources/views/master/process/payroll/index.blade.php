@@ -61,10 +61,13 @@
                                 Name Department
                             </th>
                             <th class="text-left" width="100px">
-                                Date Payrol
+                                Period Name
                             </th>
                             <th class="text-left" width="150px">
                                 Take Home Pay
+                            </th>
+                            <th class="text-left" width="100px">
+                                Date Payrol
                             </th>
                             <th class="text-left" width="300px">
                                 Description
