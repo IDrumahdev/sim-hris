@@ -1,6 +1,5 @@
 @push('customCss')
-<link rel="stylesheet" href="{{ asset('assets/system/css/choices.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/system/css/datepicker/datepicker.css') }}">
+
 @endpush
 
 @section('tittle')
@@ -122,7 +121,5 @@
 </div>
 @stop
 @push('customJs')
-    <script src="{{ asset('assets/system/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/system/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('assets/system/js/datepicker/datepicker.js') }}"></script>
+
 @endpush
