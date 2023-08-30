@@ -15,7 +15,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12 col-md-4 order-md-1 order-last">
-                <a href="" class="btn icon icon-left btn-primary btn-sm me-1 mb-1">
+                <a href="{{ route('jobTitle.create') }}" class="btn icon icon-left btn-primary btn-sm me-1 mb-1">
                     <i class="fas fa-plus-circle"></i>
                     Create
                 </a>

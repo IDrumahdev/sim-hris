@@ -73,7 +73,7 @@ class EmployeeController extends Controller
                 'gravity'     => 'bottom',
                 'position'    => 'right'
             ];
-                    return redirect()->route('employee.index')->with($notification);
+                return redirect()->route('employee.index')->with($notification);
         } catch (\Throwable $th) {
             $notification = [
                 'message'     => 'Failed to created Data Employee.',

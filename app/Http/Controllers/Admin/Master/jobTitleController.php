@@ -42,4 +42,31 @@ class jobTitleController extends Controller
         }
             return view('master.data.job_title.index');
     }
+
+    public function create()
+    {
+        return view('master.data.job_title.create');
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $this->JobTitleResponse->store($request);
+            $notification = [
+                'message'     => 'Successfully created Data Job Title.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('jobTitle.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to created Data Job Title.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('jobTitle.index')->with($notification);
+        }
+    }
 }

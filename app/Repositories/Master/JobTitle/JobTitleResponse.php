@@ -22,4 +22,12 @@ class JobTitleResponse implements JobTitleDesign {
     {
         return $this->model->select('id','job_title_name','description','created_at');
     }
+
+    public function store($param)
+    {
+        $this->model->create([
+            'job_title_name'    => $param->job_title,
+            'description'       => $param->description
+        ]);
+    }
 }
