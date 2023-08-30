@@ -161,6 +161,8 @@ Route::group(['prefix'  => '/period-payroll'], function () {
     Route::name('periodPayroll.')->group(function () {
         Route::controller(periodPayrollController::class)->group(function () {
             Route::get('/list','index')->name('index');
+            Route::get('/create','create')->name('create');
+            Route::get('/store','store')->name('store');
         });
     });
 });

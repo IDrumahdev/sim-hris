@@ -42,6 +42,15 @@ class periodPayrollController extends Controller
             ->make();
         }
             return view('master.data.Period_payroll.index');
+    }
 
+    public function create()
+    {
+        return view('master.data.Period_payroll.create');
+    }
+
+    public function store(Request $request)
+    {
+       
     }
 }
