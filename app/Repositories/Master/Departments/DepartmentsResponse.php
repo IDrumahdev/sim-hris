@@ -1,0 +1,25 @@
+<?php
+namespace App\Repositories\Master\Departments;
+
+use App\Models\Department;
+use App\Repositories\Master\Departments\DepartmentsDesign;
+
+class DepartmentsResponse implements DepartmentsDesign {
+
+    /**
+    * Model class to be used in this repository for the common methods inside Eloquent
+    * Don't remove or change $this->model variable name
+    * @property Model|mixed $model;
+    */
+    protected $model;
+
+    public function __construct(Department $model)
+    {
+        $this->model = $model;
+    }
+
+    public function datatable()
+    {
+        return $this->model->select('id','department_name','description','created_at');
+    }
+}

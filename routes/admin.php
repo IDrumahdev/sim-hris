@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Master\CustomerController;
 use App\Http\Controllers\Admin\Master\EmployeeController;
 use App\Http\Controllers\Admin\Master\jobTitleController;
 use App\Http\Controllers\Admin\Master\salaryCutController;
+use App\Http\Controllers\Admin\Master\DepartmentsController;
 use App\Http\Controllers\Admin\Dashboard\dashboardController;
 use App\Http\Controllers\Admin\Master\periodPayrollController;
 use App\Http\Controllers\Admin\Data\PayrollController as JurnalPayroll;
@@ -151,6 +152,17 @@ Route::group(['prefix'  => '/job-title'], function () {
             Route::post('/store','store')->name('store');
             Route::get('/edit/{id}','edit')->name('edit');
             Route::put('/update/{id}','update')->name('update');
+        });
+    });
+});
+
+/**
+ * Master Department
+ */
+Route::group(['prefix'  => '/departments'], function () {
+    Route::name('departments.')->group(function () {
+        Route::controller(DepartmentsController::class)->group(function () {
+            Route::get('/list','index')->name('index');
         });
     });
 });
