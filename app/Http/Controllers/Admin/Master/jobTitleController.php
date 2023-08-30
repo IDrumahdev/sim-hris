@@ -24,7 +24,7 @@ class jobTitleController extends Controller
                 
                 ->addColumn('action', function ($action) {
                     $Edit   =   '
-                                    <a href="" type="button" class="btn btn-success btn-sm btn-size">
+                                    <a href="'.url(route('jobTitle.edit',$action->id)).'" type="button" class="btn btn-success btn-sm btn-size">
                                         Edit
                                     </a>
                                 ';
@@ -62,6 +62,34 @@ class jobTitleController extends Controller
         } catch (\Throwable $th) {
             $notification = [
                 'message'     => 'Failed to created Data Job Title.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('jobTitle.index')->with($notification);
+        }
+    }
+
+    public function edit($id)
+    {
+        $result = $this->JobTitleResponse->find($id);
+            return view('master.data.job_title.edit',compact('result'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $this->JobTitleResponse->update($request, $id);
+            $notification = [
+                'message'     => 'Successfully updated Data Job Title.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('jobTitle.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to updated Data Job Title.',
                 'alert-type'  => 'danger',
                 'gravity'     => 'bottom',
                 'position'    => 'right'

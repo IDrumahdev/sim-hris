@@ -30,4 +30,17 @@ class JobTitleResponse implements JobTitleDesign {
             'description'       => $param->description
         ]);
     }
+
+    public function find($id)
+    {
+        return $this->model->select('id','job_title_name','description')->whereId($id)->firstOrFail();
+    }
+
+    public function update($param, $id)
+    {
+        $this->model->whereId($id)->update([
+            'job_title_name'    => $param->job_title,
+            'description'       => $param->description
+        ]);
+    }
 }
