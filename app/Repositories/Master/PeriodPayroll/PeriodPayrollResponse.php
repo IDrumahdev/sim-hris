@@ -32,4 +32,17 @@ class PeriodPayrollResponse implements PeriodPayrollDesign {
             'description'   => $param->description
         ]);
     }
+
+    public function find($id)
+    {
+        return $this->model->select('id','period_name','description')->whereId($id)->firstOrFail();
+    }
+
+    public function update($param, $id)
+    {
+        $this->model->whereId($id)->update([
+            'period_name'   => $param->period_name,
+            'description'   => $param->description
+        ]);
+    }
 }

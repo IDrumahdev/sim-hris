@@ -23,7 +23,7 @@ class periodPayrollController extends Controller
             return DataTables::eloquent($result)
             ->addColumn('action', function ($action) {
                 $Edit   =   '
-                                <a href="" type="button" class="btn btn-success btn-sm btn-size">
+                                <a href="'.url(route('periodPayroll.edit',$action->id)).'" type="button" class="btn btn-success btn-sm btn-size">
                                     Edit
                                 </a>
                             ';
@@ -34,7 +34,7 @@ class periodPayrollController extends Controller
                 return Carbon::create($created->created_at)->format('d-m-Y H:i:s');
             })
             ->editColumn('status', function ($status) {
-                return $status->status === 0 ? 'True' : 'False';
+                return $status->status === 0 ? 'False' : 'True';
             })
             ->rawColumns(['action'])
             ->escapeColumns(['action'])
@@ -63,6 +63,34 @@ class periodPayrollController extends Controller
         } catch (\Throwable $th) {
             $notification = [
                 'message'     => 'Failed to created Data Period Payroll.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('periodPayroll.index')->with($notification);
+        }
+    }
+
+    public function edit($id)
+    {
+        $result = $this->PeriodPayrollResponse->find($id);
+            return view('master.data.Period_payroll.edit',compact('result'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $this->PeriodPayrollResponse->update($request, $id);
+            $notification = [
+                'message'     => 'Successfully update Data Period Payroll.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('periodPayroll.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to updated Data Period Payroll.',
                 'alert-type'  => 'danger',
                 'gravity'     => 'bottom',
                 'position'    => 'right'
