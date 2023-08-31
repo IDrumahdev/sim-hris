@@ -1,6 +1,6 @@
 @push('customCss')
 <link rel="stylesheet" href="{{ asset('assets/system/css/dataTables.bootstrap5.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/system/css/sweetalert2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/assets/system/css/sweetalert/sweetalert2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/system/css/toastify.css') }}">
 @endpush
 
@@ -40,7 +40,7 @@
                 <table class="table table-hover table-striped" id="tableJobTitle">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-center" width="50px">
+                            <th class="text-center" width="100px">
                                 Action
                             </th>
                             <th class="text-left" width="20px">
@@ -49,7 +49,7 @@
                             <th class="text-left" width="150px">
                                 Job Title Name
                             </th>
-                            <th class="text-left" width="650px">
+                            <th class="text-left" width="620px">
                                 Description
                             </th>
                             <th class="text-left" width="150px">
@@ -66,8 +66,9 @@
 @push('customJs')
 <script src="{{ asset('assets/system/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/system/js/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/system/js/sweetalert2.all.min.js') }}"></script>
+<script src="{{ asset('assets/system/js/sweetalert/sweetalert.js') }}"></script>
 @include('master.data.job_title.tabel.index')
+@include('master.data.job_title.tabel.delete')
 @endpush
 
 @push('Alert')

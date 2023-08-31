@@ -43,4 +43,10 @@ class JobTitleResponse implements JobTitleDesign {
             'description'       => $param->description
         ]);
     }
+
+    public function delete($id)
+    {
+       $result = $this->model->find($id);
+        $result->delete();
+    }
 }

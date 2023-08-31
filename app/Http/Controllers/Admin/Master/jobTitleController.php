@@ -28,7 +28,14 @@ class jobTitleController extends Controller
                                         Edit
                                     </a>
                                 ';
-                    return $Edit;
+
+                    $Trash  =   '
+                                    <button type="button" class="btn btn-danger btn-sm delete-btn"
+                                            data-uuid="'.$action->id.'">
+                                            Delete
+                                    </button>
+                                ';
+                    return $Edit . " " .$Trash;
                 })
 
                 ->editColumn('created_at', function ($created) {
@@ -96,5 +103,14 @@ class jobTitleController extends Controller
             ];
                 return redirect()->route('jobTitle.index')->with($notification);
         }
+    }
+
+    public function delete($id)
+    {
+        $this->JobTitleResponse->delete($id);
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Deleted Permanently successfully.'
+        ]);
     }
 }
