@@ -22,4 +22,12 @@ class DepartmentsResponse implements DepartmentsDesign {
     {
         return $this->model->select('id','department_name','description','created_at');
     }
+
+    public function store($param)
+    {
+        $this->model->create([
+            'department_name'   => $param->department_name,
+            'description'       => $param->description
+        ]);
+    }
 }

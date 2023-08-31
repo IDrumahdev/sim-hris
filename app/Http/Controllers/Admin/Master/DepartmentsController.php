@@ -48,4 +48,26 @@ class DepartmentsController extends Controller
     {
         return view('master.data.department.create');
     }
+
+    public function store(Request $request)
+    {
+        try {
+            $this->DepartmentsResponse->store($request);
+            $notification = [
+                'message'     => 'Successfully created Data Department.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('departments.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to created Data Department.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('departments.index')->with($notification);
+        }
+    }
 }
