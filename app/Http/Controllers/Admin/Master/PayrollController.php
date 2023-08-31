@@ -58,8 +58,9 @@ class PayrollController extends Controller
 
     public function create()
     {
-        $employees = $this->PayrollResponse->employee();
-            return view('master.data.payroll.create',compact('employees'));
+        $employees  = $this->PayrollResponse->employee();
+        $salaryCuts = $this->PayrollResponse->salaryCut();
+            return view('master.data.payroll.create',compact('employees','salaryCuts'));
     }
 
     public function store(Request $request)

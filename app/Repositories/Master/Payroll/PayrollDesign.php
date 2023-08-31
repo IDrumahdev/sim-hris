@@ -8,4 +8,5 @@ interface PayrollDesign
     public function employee();
     public function store($param);
     public function update($param, $id);
+    public function salaryCut();
 }

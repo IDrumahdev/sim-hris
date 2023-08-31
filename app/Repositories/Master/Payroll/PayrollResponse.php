@@ -2,8 +2,9 @@
 
 namespace App\Repositories\Master\Payroll;
 
-use App\Models\Employee;
 use App\Models\Payroll;
+use App\Models\Employee;
+use App\Models\salaryCut;
 use App\Repositories\Master\Payroll\PayrollDesign;
 
 class PayrollResponse implements PayrollDesign {
@@ -15,11 +16,13 @@ class PayrollResponse implements PayrollDesign {
     */
     protected $model;
     protected $employee;
+    protected $salaryCut;
 
-    public function __construct(Payroll $model, Employee $employee)
+    public function __construct(Payroll $model, Employee $employee, salaryCut $salaryCut)
     {
-        $this->model    = $model;
-        $this->employee = $employee;
+        $this->model        = $model;
+        $this->employee     = $employee;
+        $this->salaryCut    = $salaryCut;
     }
 
     public function datatabel()
@@ -35,10 +38,12 @@ class PayrollResponse implements PayrollDesign {
 
     public function store($param)
     {
-        $total = $param->basic_salary + $param->allowance;
+        $salary_cut = $this->salaryCut->select('id','salary_cut_name','nominal')->whereId($param->salary_cut_id)->first();
+        $total      = ($param->basic_salary + $param->allowance) - $salary_cut->nominal;
         $this->model->create([
             'basic_salary'      => $param->basic_salary,
             'employee_id'       => $param->employee_id,
+            'salary_cut_id'     => $param->salary_cut_id,
             'allowance'         => $param->allowance,
             'total_salary'      => $total
         ]);
@@ -58,5 +63,10 @@ class PayrollResponse implements PayrollDesign {
             'allowance'         => $param->allowance,
             'total_salary'      => $total
         ]);
+    }
+
+    public function salaryCut()
+    {
+        return $this->salaryCut->select('id','salary_cut_name','nominal')->latest()->get();
     }
 }

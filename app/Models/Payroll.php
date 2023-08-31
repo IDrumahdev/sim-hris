@@ -15,7 +15,7 @@ class Payroll extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'basic_salary','employee_id','allowance','total_salary'
+        'basic_salary','employee_id','salary_cut_id','allowance','total_salary'
     ];
 
     public function employee()

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin\Master;
 
 use Carbon\Carbon;
+use App\Helper\IDR;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Data\SaleryCut\store;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Data\SaleryCut\store;
 use App\Repositories\Master\SalaryCut\SalaryCutResponse;
 
 class salaryCutController extends Controller
@@ -35,6 +36,10 @@ class salaryCutController extends Controller
                         ->editColumn('created_at', function ($created) {
                             $date = Carbon::create($created->created_at)->format('d-m-Y');
                             return $date;
+                        })
+
+                        ->editColumn('nominal', function ($data) {
+                            return "Rp." . IDR::Format($data->nominal);
                         })
                         
                         ->rawColumns(['action'])

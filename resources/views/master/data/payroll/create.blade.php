@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-first">
                 <h3>
-                    Create
+                    Create Data Payroll
                 </h3>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-last">
@@ -68,6 +68,28 @@
                                         </select>
                                     
                                                 @error('employee_id')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                    <label for="first-name-vertical">
+                                        Salary Cut
+                                    </label>
+                                        <select class="form-select @error('salary_cut_id') is-invalid @enderror" name="salary_cut_id">
+                                            <option value="" selected>Choose Salary Cut...</option>
+                                            @foreach($salaryCuts as $salaryCut)
+                                                <option value="{{ $salaryCut->id }}"{{ old('salary_cut_id') == $salaryCut->id ? 'selected' : '' }}>
+                                                    {{ ucwords($salaryCut->salary_cut_name) }} - {{  $salaryCut->nominal }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    
+                                                @error('salary_cut_id')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>

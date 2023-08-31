@@ -21,6 +21,11 @@ return new class extends Migration
                     ->constrained('employees')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
+
+            $table->foreignUuid('salary_cut_id')
+                    ->constrained('salary_cuts')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
                     
             $table->integer('allowance');
             $table->integer('total_salary');
