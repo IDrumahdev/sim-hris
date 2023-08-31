@@ -84,6 +84,34 @@
 
                                 <div class="col-4">
                                     <div class="form-group">
+                                    <label for="first-name-vertical">
+                                        Salary Cut
+                                    </label>
+                                        <select class="form-select @error('salary_cut_id') is-invalid @enderror" name="salary_cut_id">
+                                            <option value="" selected>Choose Salary Cut...</option>
+                                            @foreach($salaryCuts as $salaryCut)
+                                                @if (old('salary_cut_id') == $salaryCut->id)
+                                                    <option value="{{ $salaryCut->id }}" selected>
+                                                        {{ ucwords($salaryCut->salary_cut_name) }} - {{ $salaryCut->nominal }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $salaryCut->id }}" {{ $salaryCut->id == $result->salary_cut_id ? 'selected' : '' }}>
+                                                        {{ ucwords($salaryCut->salary_cut_name) }} - {{  $salaryCut->nominal }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    
+                                                @error('salary_cut_id')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
                                         <label for="basic_salary">
                                             Basic Salary
                                         </label>

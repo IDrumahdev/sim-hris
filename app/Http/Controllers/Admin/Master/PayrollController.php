@@ -88,8 +88,9 @@ class PayrollController extends Controller
     public function edit($id)
     {
         $employees  = $this->PayrollResponse->employee();
+        $salaryCuts = $this->PayrollResponse->salaryCut();
         $result     = $this->PayrollResponse->find($id);
-            return view('master.data.payroll.edit',compact('result','employees'));
+            return view('master.data.payroll.edit',compact('result','employees','salaryCuts'));
     }
 
     public function update(Request $request, $id)

@@ -51,14 +51,16 @@ class PayrollResponse implements PayrollDesign {
 
     public function find($id)
     {
-        return $this->model->select('id','basic_salary','employee_id','allowance','total_salary','created_at')
+        return $this->model->select('id','basic_salary','employee_id','salary_cut_id','allowance','total_salary','created_at')
                             ->whereId($id)->firstOrFail();
     }
 
     public function update($param, $id)
     {
-        $total = $param->basic_salary + $param->allowance;
+        $salary_cut = $this->salaryCut->select('id','salary_cut_name','nominal')->whereId($param->salary_cut_id)->first();
+        $total      = ($param->basic_salary + $param->allowance) - $salary_cut->nominal;
         $this->model->whereId($id)->update([
+            'salary_cut_id'     => $param->salary_cut_id,
             'basic_salary'      => $param->basic_salary,
             'allowance'         => $param->allowance,
             'total_salary'      => $total
