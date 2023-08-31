@@ -30,4 +30,17 @@ class DepartmentsResponse implements DepartmentsDesign {
             'description'       => $param->description
         ]);
     }
+
+    public function find($id)
+    {
+        return $this->model->select('id','department_name','description')->whereId($id)->firstOrFail();
+    }
+
+    public function update($param, $id)
+    {
+        $this->model->whereId($id)->update([
+            'department_name'   => $param->department_name,
+            'description'       => $param->description
+        ]);
+    }
 }

@@ -29,7 +29,7 @@ class DepartmentsController extends Controller
 
             ->addColumn('action', function ($action) {
                 $Edit   =   '
-                                <a href="" type="button" class="btn btn-success btn-sm btn-size">
+                                <a href="'.url(route('departments.edit',$action->id)).'" type="button" class="btn btn-success btn-sm btn-size">
                                     Edit
                                 </a>
                             ';
@@ -63,6 +63,34 @@ class DepartmentsController extends Controller
         } catch (\Throwable $th) {
             $notification = [
                 'message'     => 'Failed to created Data Department.',
+                'alert-type'  => 'danger',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('departments.index')->with($notification);
+        }
+    }
+
+    public function edit($id)
+    {
+        $result = $this->DepartmentsResponse->find($id);
+            return view('master.data.department.edit',compact('result'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $this->DepartmentsResponse->update($request, $id);
+            $notification = [
+                'message'     => 'Successfully updated Data Department.',
+                'alert-type'  => 'success',
+                'gravity'     => 'bottom',
+                'position'    => 'right'
+            ];
+                return redirect()->route('departments.index')->with($notification);
+        } catch (\Throwable $th) {
+            $notification = [
+                'message'     => 'Failed to updated Data Department.',
                 'alert-type'  => 'danger',
                 'gravity'     => 'bottom',
                 'position'    => 'right'
